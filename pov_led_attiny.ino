@@ -19,7 +19,7 @@ void setup()
 
 int a[] = {1, 6, 26, 6, 1};
 int b[] = {31, 21, 21, 10, 0};
-int c2[] = {14, 17, 17, 10, 0};
+int c[] = {14, 17, 17, 10, 0};
 int d[] = {31, 17, 17, 14, 0};
 int e[] = {31, 21, 21, 17, 0};
 int f[] = {31, 20, 20, 16, 0};
@@ -48,48 +48,60 @@ int eos[] = {0, 1, 0, 0, 0};
 int excl[] = {0, 29, 0, 0, 0};
 int ques[] = {8, 19, 20, 8, 0};
 
+void clearLine (int line ) {
+  digitalWrite(LED1, LOW);
+  digitalWrite(LED2, LOW);
+  digitalWrite(LED3, LOW);
+  digitalWrite(LED4, LOW);
+  digitalWrite(LED5, LOW);
+}
 void displayLine(int line)
 {
   int myline;
   myline = line;
-  if (myline>=16) {digitalWrite(LED1, HIGH); myline-=16;} else {digitalWrite(LED1, LOW);}
-  if (myline>=8)  {digitalWrite(LED2, HIGH); myline-=8;}  else {digitalWrite(LED2, LOW);}
-  if (myline>=4)  {digitalWrite(LED3, HIGH); myline-=4;}  else {digitalWrite(LED3, LOW);}
-  if (myline>=2)  {digitalWrite(LED4, HIGH); myline-=2;}  else {digitalWrite(LED4, LOW);}
-  if (myline>=1)  {digitalWrite(LED5, HIGH); myline-=1;}  else {digitalWrite(LED5, LOW);} 
+  if (myline>=16) {digitalWrite(LED1, HIGH); myline-=16;} 
+  if (myline>=8)  {digitalWrite(LED2, HIGH); myline-=8;}  
+  if (myline>=4)  {digitalWrite(LED3, HIGH); myline-=4;} 
+  if (myline>=2)  {digitalWrite(LED4, HIGH); myline-=2;} 
+  if (myline>=1)  {digitalWrite(LED5, HIGH); myline-=1;} 
+  delay(delayTime);
+  clearLine(0);
 }
 
-void displayChar(char c)
+void displayChar(char ch)
 {
-  if (c == 'a'){for (int i = 0; i <5; i++){displayLine(a[i]);delay(delayTime);}displayLine(0);}
-  if (c == 'b'){for (int i = 0; i <5; i++){displayLine(b[i]);delay(delayTime);}displayLine(0);}
-  if (c == 'c'){for (int i = 0; i <5; i++){displayLine(c2[i]);delay(delayTime);}displayLine(0);}
-  if (c == 'd'){for (int i = 0; i <5; i++){displayLine(d[i]);delay(delayTime);}displayLine(0);}
-  if (c == 'e'){for (int i = 0; i <5; i++){displayLine(e[i]);delay(delayTime);}displayLine(0);}
-  if (c == 'f'){for (int i = 0; i <5; i++){displayLine(f[i]);delay(delayTime);}displayLine(0);}
-  if (c == 'g'){for (int i = 0; i <5; i++){displayLine(g[i]);delay(delayTime);}displayLine(0);}
-  if (c == 'h'){for (int i = 0; i <5; i++){displayLine(h[i]);delay(delayTime);}displayLine(0);} 
-  if (c == 'i'){for (int it = 0; it <5; it++){displayLine(i[it]);delay(delayTime);}displayLine(0);}
-  if (c == 'j'){for (int i = 0; i <5; i++){displayLine(j[i]);delay(delayTime);}displayLine(0);}
-  if (c == 'k'){for (int i = 0; i <5; i++){displayLine(k[i]);delay(delayTime);}displayLine(0);}
-  if (c == 'l'){for (int i = 0; i <5; i++){displayLine(l[i]);delay(delayTime);}displayLine(0);}
-  if (c == 'm'){for (int i = 0; i <5; i++){displayLine(m[i]);delay(delayTime);}displayLine(0);}
-  if (c == 'n'){for (int i = 0; i <5; i++){displayLine(n[i]);delay(delayTime);}displayLine(0);}
-  if (c == 'o'){for (int i = 0; i <5; i++){displayLine(o[i]);delay(delayTime);}displayLine(0);}
-  if (c == 'p'){for (int i = 0; i <5; i++){displayLine(p[i]);delay(delayTime);}displayLine(0);}
-  if (c == 'q'){for (int i = 0; i <5; i++){displayLine(q[i]);delay(delayTime);}displayLine(0);}
-  if (c == 'r'){for (int i = 0; i <5; i++){displayLine(r[i]);delay(delayTime);}displayLine(0);}
-  if (c == 's'){for (int i = 0; i <5; i++){displayLine(s[i]);delay(delayTime);}displayLine(0);}
-  if (c == 't'){for (int i = 0; i <5; i++){displayLine(t[i]);delay(delayTime);}displayLine(0);}
-  if (c == 'u'){for (int i = 0; i <5; i++){displayLine(u[i]);delay(delayTime);}displayLine(0);}
-  if (c == 'v'){for (int i = 0; i <5; i++){displayLine(v[i]);delay(delayTime);}displayLine(0);}
-  if (c == 'w'){for (int i = 0; i <5; i++){displayLine(w[i]);delay(delayTime);}displayLine(0);}
-  if (c == 'x'){for (int i = 0; i <5; i++){displayLine(x[i]);delay(delayTime);}displayLine(0);}
-  if (c == 'y'){for (int i = 0; i <5; i++){displayLine(y[i]);delay(delayTime);}displayLine(0);}
-  if (c == 'z'){for (int i = 0; i <5; i++){displayLine(z[i]);delay(delayTime);}displayLine(0);}
-  if (c == '!'){for (int i = 0; i <5; i++){displayLine(excl[i]);delay(delayTime);}displayLine(0);}
-  if (c == '?'){for (int i = 0; i <5; i++){displayLine(ques[i]);delay(delayTime);}displayLine(0);}
-  if (c == '.'){for (int i = 0; i <5; i++){displayLine(eos[i]);delay(delayTime);}displayLine(0);}
+for (int i = 0; i <5; i++) {
+  
+  if (ch == 'a'){displayLine(a[i]);}
+  if (ch == 'b'){displayLine(b[i]);}
+  if (ch == 'c'){displayLine(c[i]);}
+  if (ch == 'd'){displayLine(d[i]);}
+  if (ch == 'e'){displayLine(e[i]);}
+  if (ch == 'f'){displayLine(f[i]);}
+  if (ch == 'g'){displayLine(g[i]);}
+  if (ch == 'h'){displayLine(h[i]);}
+  if (ch == 'i'){displayLine(i[i]);}
+  if (ch == 'j'){displayLine(j[i]);}
+  if (ch == 'k'){displayLine(k[i]);}
+  if (ch == 'l'){displayLine(l[i]);}
+  if (ch == 'm'){displayLine(m[i]);}
+  if (ch == 'n'){displayLine(n[i]);}
+  if (ch == 'o'){displayLine(o[i]);}
+  if (ch == 'p'){displayLine(p[i]);}
+  if (ch == 'q'){displayLine(q[i]);}
+  if (ch == 'r'){displayLine(r[i]);}
+  if (ch == 's'){displayLine(s[i]);}
+  if (ch == 't'){displayLine(t[i]);}
+  if (ch == 'u'){displayLine(u[i]);}
+  if (ch == 'v'){displayLine(v[i]);}
+  if (ch == 'w'){displayLine(w[i]);}
+  if (ch == 'x'){displayLine(x[i]);}
+  if (ch == 'y'){displayLine(y[i]);}
+  if (ch == 'z'){displayLine(z[i]);}
+  if (ch == '!'){displayLine(excl[i]);
+  if (ch == '?'){displayLine(ques[i]);
+  if (ch == '.'){displayLine(eos[i]);
+  }
   delay(charBreak);
 }
 
