@@ -102,6 +102,7 @@ for (int i = 0; i <5; i++) {
   if (ch == '?'){displayLine(ques[i]);
   if (ch == '.'){displayLine(eos[i]);
   }
+  
   delay(charBreak);
 }
 
